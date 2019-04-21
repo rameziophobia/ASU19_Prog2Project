@@ -44,10 +44,45 @@ public class GameViewManager {
     private int numberOfObstacles = 0;
     private int numberOfEnemies = 0;
     private double timer;
+    private GameViewUI GVUI;
 
     public GameViewManager() {
+        /*Timeline animation = new Timeline(new KeyFrame(Duration.millis(1), e ->
+
+                gameScene.setOnKeyPressed(event -> {
+                    switch (event.getCode()) {
+                        case W:
+                        case UP: {
+                            upPressed = true;
+                            break;
+                        }
+                        case A:
+                        case LEFT: {
+                            leftPressed = true;
+                            break;
+                        }
+                        case S:
+                        case DOWN: {
+                            downPressed = true;
+                            break;
+                        }
+                        case D:
+                        case RIGHT: {
+                            rightPressed = true;
+                            break;
+                        }
+                        case U: {
+                            player.takeDmg(20);
+
+                        }
+                    }
+
+                })));
+        animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();*/
         initializeStage();
         createKeyListeners();
+        GVUI = new GameViewUI();
     }
 
     private void createKeyListeners() {
@@ -71,6 +106,18 @@ public class GameViewManager {
                 case D:
                 case RIGHT: {
                     rightPressed = true;
+                    break;
+                }
+                case T: {
+                    player.takeDmg(20);
+                    break;
+                }
+                case I:{
+                    player.increaseHP(10);
+                    break;
+                }
+                case R:{
+                    player.regenerate();
                     break;
                 }
             }
@@ -114,8 +161,8 @@ public class GameViewManager {
         Dimension resolution = Toolkit.getDefaultToolkit().getScreenSize();
         double width = resolution.getWidth();
         double height = resolution.getHeight();
-        double w = width/WIDTH;  //your window width
-        double h = height/HEIGHT;  //your window hight
+        double w = width / WIDTH;  //your window width
+        double h = height / HEIGHT;  //your window hight
         Scale scale = new Scale(w, h, 0, 0);
         gamePane.getTransforms().add(scale);
 
@@ -144,24 +191,24 @@ public class GameViewManager {
     }
 
     private void createPlayer(PLAYERS chosenPlayer) {
-        player = new Player(chosenPlayer);
+        player = new Player(chosenPlayer,GVUI.getHPRectangle(),GVUI.getShieldRectangle());
         gamePane.getChildren().add(player);
     }
 
     private void createUI() {
-        gamePane.getChildren().add(new GameViewUI().getGroup());
+        gamePane.getChildren().addAll(GVUI.getGroup(),GVUI.getVBox());
     }
 
     private void followPlayer() {
         for (Enemy enemy : enemyArrayList) {
-            enemy.updateDirection(player.getLayoutX(),player.getLayoutY());
+            enemy.updateDirection(player.getLayoutX(), player.getLayoutY());
             enemy.move();
         }
     }
 
     private void createEnemy() {
         enemyArrayList = new ArrayList<>();
-        Enemy sandTank = new normalTank(TANK_SAND, player.getLayoutX(),player.getLayoutY());
+        Enemy sandTank = new normalTank(TANK_SAND, player.getLayoutX(), player.getLayoutY());
         enemyArrayList.add(sandTank);
         gamePane.getChildren().add(sandTank);
     }
@@ -184,37 +231,40 @@ public class GameViewManager {
     }
 
     private void gameLoop() {
+        //timer();
         gameTimer = new AnimationTimer() {
             @Override
             public void handle(long now) {
                 timer += 0.016;
                 createEnemies();
                 createObstacles();
-                player.move(upPressed,downPressed,leftPressed,rightPressed);
+                player.move(upPressed, downPressed, leftPressed, rightPressed);
                 player.warp();
                 moveProjectile();
-                followPlayer();
+                followPlayer(); //todo remove comment dashes
                 checkCollision();
+                //GameViewUI.getHPRectangle().setWidth(50);
             }
+
         };
         gameTimer.start();
     }
 
-    private void createEnemies(){
-        if(timer / 3 > numberOfEnemies){
-            Enemy enemy = new normalTank(TANK_SAND, player.getLayoutX(),player.getLayoutY());
+    private void createEnemies() {
+        if (timer / 6 > numberOfEnemies) {
+            Enemy enemy = new normalTank(TANK_SAND, player.getLayoutX(), player.getLayoutY());
             enemyArrayList.add(enemy);
             gamePane.getChildren().add(enemy);
             numberOfEnemies++;
         }
 
     }
+
     private void createObstacles() {//todo implement timer
-        if(timer / 10 > numberOfObstacles){
+        if (timer / 10 > numberOfObstacles) {
             gamePane.getChildren().add(createRandomRotator());
             numberOfObstacles++;
         }
-//        System.out.println(timer);
 
     }
 
@@ -224,17 +274,17 @@ public class GameViewManager {
             for (ProjectileMaker p : projArr) {
                 p.move();
                 //if the object crossed the boundary adds it to the remove list
-                if (p.getLayoutY() > GameViewManager.HEIGHT ||
-                        p.getLayoutY() < 0) {
+                if (p.getLayoutY() > GameViewManager.HEIGHT + 100 ||
+                        p.getLayoutY() < -100) {
                     projArrRemove.add(p);
-                } else if (p.getLayoutX() > GameViewManager.WIDTH ||
-                        p.getLayoutX() < 0) {
+                } else if (p.getLayoutX() > GameViewManager.WIDTH + 100 ||
+                        p.getLayoutX() < -100) {
                     projArrRemove.add(p);
                 }
             }
             gamePane.getChildren().removeAll(projArrRemove);
             projArr.removeAll(projArrRemove);
-//            System.out.println(projArr.size());
+
 
         }
     }
@@ -258,28 +308,29 @@ public class GameViewManager {
     }
 
 
-    private void checkCollision(){//todo: enqueue & dequeue
+    private void checkCollision() {//todo: enqueue & dequeue
         //todo: move collisions to a listener inside sprite classes
 
         ArrayList<ProjectileMaker> projArrRemove = new ArrayList<>();
         ArrayList<Enemy> enemyArrRemove = new ArrayList<>();
 
-        for(ProjectileMaker p: projArr){
-            for(Enemy enemy: enemyArrayList){
+        for (ProjectileMaker p : projArr) {
+            for (Enemy enemy : enemyArrayList) {
 
-                if(p.isIntersects(enemy)){
+                if (p.isIntersects(enemy)) {
                     //3ashan my3mlsh collisions abl ma yetshal
                     p.setLayoutY(-500);
 
-                    enemy.setHp_current(enemy.getCurrentHp() - p.getProj().getDamage()) ;
+                    enemy.setHp_current(enemy.getCurrentHp() - p.getProj().getDamage());
 
                     projArrRemove.add(p);
 
-                    if(enemy.getCurrentHp() <= 0){
+                    if (enemy.getCurrentHp() <= 0) {
                         enemyArrRemove.add(enemy);
                         //todo: add points
                         //todo: respawn
                     }
+
                 }
             }
         }
@@ -297,7 +348,45 @@ public class GameViewManager {
                 image.getHeight() / 2));
     }
 
+   /* private void timer() {
+        Timeline animation = new Timeline(new KeyFrame(Duration.millis(1), e ->
+
+                gameScene.setOnKeyPressed(event -> {
+                    switch (event.getCode()) {
+                        case W:
+                        case UP: {
+                            upPressed = true;
+                            break;
+                        }
+                        case A:
+                        case LEFT: {
+                            leftPressed = true;
+                            break;
+                        }
+                        case S:
+                        case DOWN: {
+                            downPressed = true;
+                            break;
+                        }
+                        case D:
+                        case RIGHT: {
+                            rightPressed = true;
+                            break;
+                        }
+                        case U: {
+                            player.takeDmg(20);
+
+                        }
+                    }
+
+                })));
+        *//*animation.setCycleCount(Timeline.INDEFINITE);
+        animation.play();*//*
+
+    }*/
+}
+
 //    public  double minDistance(double x1, double x2, double y1, double y2){
 //        return Math.hypot(x2 - x1, y2 - y1);
 //    }
-}
+

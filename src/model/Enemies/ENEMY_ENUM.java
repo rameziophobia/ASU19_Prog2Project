@@ -1,5 +1,6 @@
 package model.Enemies;
 
+import javafx.scene.SceneAntialiasing;
 import javafx.scene.shape.Rectangle;
 
 public enum ENEMY_ENUM {

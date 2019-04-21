@@ -34,7 +34,6 @@ public class ProjectileMaker  extends Sprite {
     public void move() {
         double speedX = Math.cos(Math.toRadians(angle)) * SPEED;
         double speedY = Math.sin(Math.toRadians(angle)) * SPEED;
-        System.out.println(speedX + " " + speedY + getLayoutX() + " " + getLayoutY());
         setSpriteY(getLayoutY() + speedY);
         setSpriteX(getLayoutX() + speedX);
 

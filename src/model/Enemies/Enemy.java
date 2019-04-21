@@ -26,8 +26,15 @@ public abstract class Enemy extends Sprite {
         this.enemyType = enemyType; //todo: add shooting mechanic to enemies
 
         Random rand = new Random();
-        setSpriteY(rand.nextInt(HEIGHT));
-        setSpriteX(rand.nextInt(WIDTH));
+        double currentX = rand.nextInt(WIDTH);
+        double currentY = rand.nextInt(HEIGHT);
+        double limit = 175;
+        while( Math.hypot(playerXPos-currentX,playerYPos-currentY)<limit){
+            currentX = rand.nextInt(WIDTH);
+            currentY = rand.nextInt(HEIGHT);
+        }
+        setSpriteY(currentY);
+        setSpriteX(currentX);
 
         updateDirection(playerXPos, playerYPos);
         setRotate(angle);
