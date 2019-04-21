@@ -73,6 +73,7 @@ public class Player extends Sprite {
         if(ShieldRectangle.getCurrentValue() > 0){
             ShieldRectangle.decreaseCurrent(damage);
             barScaleAnimator(ShieldRectangle);
+            GameViewManager.nextRegenTime = System.currentTimeMillis() + GameViewManager.regenerationTimeLimitms;
         }
         else {
             HPRectangle.decreaseCurrent(damage);

@@ -6,19 +6,9 @@
     </artifacts-to-build>
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="">
-      <change beforePath="$PROJECT_DIR$/.idea/misc.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/vcs.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Enemies/ENEMY_ENUM.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Enemies/ENEMY_ENUM.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/Enemies/Enemy.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/Enemies/Enemy.java" afterDir="false" />
+    <list default="true" id="cdb932d9-7e58-4d94-93a9-e7b232ef17da" name="Default" comment="Added more functionalities to Bars">
       <change beforePath="$PROJECT_DIR$/src/model/player/Player.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/player/Player.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/model/projectiles/ProjectileMaker.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/model/projectiles/ProjectileMaker.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/sample/Main.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/sample/Main.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/Bars.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/Bars.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/view/GameViewManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameViewManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/view/GameViewUI.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/view/GameViewUI.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/topDownShooter.iml" beforeDir="false" afterPath="$PROJECT_DIR$/topDownShooter.iml" afterDir="false" />
     </list>
     <ignored path="JavaFxApplication.iws" />
     <ignored path=".idea/workspace.xml" />
@@ -113,12 +103,22 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/GameViewManager.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="51">
-              <caret line="113" column="17" lean-forward="true" selection-start-line="113" selection-start-column="17" selection-end-line="113" selection-end-column="17" />
+            <state relative-caret-position="306">
+              <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="e#1518#2638#0" />
-                <element signature="e#6055#6056#0" expanded="true" />
+                <element signature="method#initializeStage#0;class#GameViewManager#0" />
+                <element signature="method#createBackground#0;class#GameViewManager#0" />
+                <element signature="method#createNewGame#0;class#GameViewManager#0" />
+                <element signature="method#createPlayer#0;class#GameViewManager#0" />
+                <element signature="e#5876#5954#1" />
+                <element signature="e#6040#6041#0" expanded="true" />
+                <element signature="method#followPlayer#0;class#GameViewManager#0" />
+                <element signature="method#createEnemy#0;class#GameViewManager#0" />
+                <element signature="method#trackMouse#0;class#GameViewManager#0" />
+                <element signature="method#calculateRotation#0;class#GameViewManager#0" />
+                <element signature="method#createEnemies#0;class#GameViewManager#0" />
               </folding>
             </state>
           </provider>
@@ -127,8 +127,8 @@
       <file pinned="false" current-in-tab="true">
         <entry file="file://$PROJECT_DIR$/src/model/player/Player.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="-80">
-              <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+            <state relative-caret-position="221">
+              <caret line="80" column="9" lean-forward="true" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
               <folding>
                 <element signature="imports" expanded="true" />
                 <element signature="method#move#0;class#Player#0" />
@@ -140,7 +140,7 @@
       <file pinned="false" current-in-tab="false">
         <entry file="file://$PROJECT_DIR$/src/view/GameViewUI.java">
           <provider selected="true" editor-type-id="text-editor">
-            <state relative-caret-position="258">
+            <state relative-caret-position="513">
               <caret line="96" column="57" lean-forward="true" selection-start-line="96" selection-start-column="57" selection-end-line="96" selection-end-column="57" />
               <folding>
                 <element signature="imports" expanded="true" />
@@ -484,6 +484,14 @@
       <updated>1359379246138</updated>
       <workItem from="1359379250712" duration="1302000" />
     </task>
+    <task id="LOCAL-00001" summary="Added more functionalities to Bars">
+      <created>1555865972493</created>
+      <option name="number" value="00001" />
+      <option name="presentableId" value="LOCAL-00001" />
+      <option name="project" value="LOCAL" />
+      <updated>1555865972493</updated>
+    </task>
+    <option name="localTasksCounter" value="2" />
     <servers />
   </component>
   <component name="TimeTrackingManager">
@@ -512,14 +520,14 @@
       <window_info id="Capture Tool" order="7" />
       <window_info anchor="bottom" id="Terminal" order="0" weight="0.3286119" />
       <window_info anchor="bottom" id="Message" order="1" />
-      <window_info active="true" anchor="bottom" id="Find" order="2" visible="true" weight="0.32719547" />
-      <window_info anchor="bottom" id="Run" order="3" weight="0.18130311" />
+      <window_info anchor="bottom" id="Find" order="2" weight="0.32719547" />
+      <window_info active="true" anchor="bottom" id="Run" order="3" visible="true" weight="0.18130311" />
       <window_info anchor="bottom" id="Debug" order="4" weight="0.398017" />
       <window_info anchor="bottom" id="Cvs" order="5" weight="0.25" />
       <window_info anchor="bottom" id="Inspection" order="6" weight="0.4" />
       <window_info anchor="bottom" id="TODO" order="7" weight="0.32827735" />
       <window_info anchor="bottom" id="Application Servers" order="8" />
-      <window_info anchor="bottom" id="Version Control" order="9" />
+      <window_info anchor="bottom" id="Version Control" order="9" weight="0.3286119" />
       <window_info anchor="bottom" id="Problems" order="10" />
       <window_info anchor="bottom" id="Changes" order="11" />
       <window_info anchor="bottom" id="Profiler" order="12" />
@@ -541,6 +549,8 @@
   <component name="VcsManagerConfiguration">
     <option name="OFFER_MOVE_TO_ANOTHER_CHANGELIST_ON_PARTIAL_COMMIT" value="true" />
     <option name="INCLUDE_TEXT_INTO_SHELF" value="false" />
+    <MESSAGE value="Added more functionalities to Bars" />
+    <option name="LAST_COMMIT_MESSAGE" value="Added more functionalities to Bars" />
   </component>
   <component name="antWorkspaceConfiguration">
     <option name="IS_AUTOSCROLL_TO_SOURCE" value="false" />
@@ -797,6 +807,24 @@
         </state>
       </provider>
     </entry>
+    <entry file="file://$PROJECT_DIR$/src/view/Bars.java">
+      <provider selected="true" editor-type-id="text-editor">
+        <state relative-caret-position="-51">
+          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
+          <folding>
+            <element signature="imports" expanded="true" />
+            <element signature="e#212#213#0" expanded="true" />
+            <element signature="e#260#261#0" expanded="true" />
+            <element signature="e#195#196#0" expanded="true" />
+            <element signature="e#230#231#0" expanded="true" />
+            <element signature="e#760#761#0" expanded="true" />
+            <element signature="e#832#833#0" expanded="true" />
+            <element signature="e#894#895#0" expanded="true" />
+            <element signature="e#927#928#0" expanded="true" />
+          </folding>
+        </state>
+      </provider>
+    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/ViewManager.java">
       <provider selected="true" editor-type-id="text-editor">
         <state relative-caret-position="306">
@@ -820,7 +848,7 @@
     </entry>
     <entry file="file://$PROJECT_DIR$/src/view/GameViewUI.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="258">
+        <state relative-caret-position="513">
           <caret line="96" column="57" lean-forward="true" selection-start-line="96" selection-start-column="57" selection-end-line="96" selection-end-column="57" />
           <folding>
             <element signature="imports" expanded="true" />
@@ -836,40 +864,32 @@
         </state>
       </provider>
     </entry>
-    <entry file="file://$PROJECT_DIR$/src/view/Bars.java">
-      <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-51">
-          <caret line="9" column="34" selection-start-line="9" selection-start-column="34" selection-end-line="9" selection-end-column="34" />
-          <folding>
-            <element signature="imports" expanded="true" />
-            <element signature="e#212#213#0" expanded="true" />
-            <element signature="e#260#261#0" expanded="true" />
-            <element signature="e#195#196#0" expanded="true" />
-            <element signature="e#230#231#0" expanded="true" />
-            <element signature="e#760#761#0" expanded="true" />
-            <element signature="e#832#833#0" expanded="true" />
-            <element signature="e#894#895#0" expanded="true" />
-            <element signature="e#927#928#0" expanded="true" />
-          </folding>
-        </state>
-      </provider>
-    </entry>
     <entry file="file://$PROJECT_DIR$/src/view/GameViewManager.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="51">
-          <caret line="113" column="17" lean-forward="true" selection-start-line="113" selection-start-column="17" selection-end-line="113" selection-end-column="17" />
+        <state relative-caret-position="306">
+          <caret line="48" column="17" selection-start-line="48" selection-start-column="17" selection-end-line="48" selection-end-column="17" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="e#1518#2638#0" />
-            <element signature="e#6055#6056#0" expanded="true" />
+            <element signature="method#initializeStage#0;class#GameViewManager#0" />
+            <element signature="method#createBackground#0;class#GameViewManager#0" />
+            <element signature="method#createNewGame#0;class#GameViewManager#0" />
+            <element signature="method#createPlayer#0;class#GameViewManager#0" />
+            <element signature="e#5876#5954#1" />
+            <element signature="e#6040#6041#0" expanded="true" />
+            <element signature="method#followPlayer#0;class#GameViewManager#0" />
+            <element signature="method#createEnemy#0;class#GameViewManager#0" />
+            <element signature="method#trackMouse#0;class#GameViewManager#0" />
+            <element signature="method#calculateRotation#0;class#GameViewManager#0" />
+            <element signature="method#createEnemies#0;class#GameViewManager#0" />
           </folding>
         </state>
       </provider>
     </entry>
     <entry file="file://$PROJECT_DIR$/src/model/player/Player.java">
       <provider selected="true" editor-type-id="text-editor">
-        <state relative-caret-position="-80">
-          <caret line="82" column="26" selection-start-line="82" selection-start-column="26" selection-end-line="82" selection-end-column="26" />
+        <state relative-caret-position="221">
+          <caret line="80" column="9" lean-forward="true" selection-start-line="80" selection-start-column="9" selection-end-line="80" selection-end-column="9" />
           <folding>
             <element signature="imports" expanded="true" />
             <element signature="method#move#0;class#Player#0" />

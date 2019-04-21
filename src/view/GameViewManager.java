@@ -45,6 +45,8 @@ public class GameViewManager {
     private int numberOfEnemies = 0;
     private double timer;
     private GameViewUI GVUI;
+    public static long nextRegenTime = 0;
+    public static long regenerationTimeLimitms= 5000;
 
     public GameViewManager() {
         /*Timeline animation = new Timeline(new KeyFrame(Duration.millis(1), e ->
@@ -114,10 +116,6 @@ public class GameViewManager {
                 }
                 case I:{
                     player.increaseHP(10);
-                    break;
-                }
-                case R:{
-                    player.regenerate();
                     break;
                 }
             }
@@ -231,6 +229,7 @@ public class GameViewManager {
     }
 
     private void gameLoop() {
+
         //timer();
         gameTimer = new AnimationTimer() {
             @Override
@@ -243,7 +242,10 @@ public class GameViewManager {
                 moveProjectile();
                 followPlayer(); //todo remove comment dashes
                 checkCollision();
-                //GameViewUI.getHPRectangle().setWidth(50);
+                if (nextRegenTime < System.currentTimeMillis()) {
+                    nextRegenTime = System.currentTimeMillis() + regenerationTimeLimitms;
+                    player.regenerate();
+                }
             }
 
         };
