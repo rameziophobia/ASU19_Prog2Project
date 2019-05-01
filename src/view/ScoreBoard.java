@@ -78,7 +78,6 @@ public class ScoreBoard {
             scoreList.add(new ScoreData(data.get(j)));
             j++;
         }
-        ScoreData.sortScores(scoreList);
         return scoreList;
     }
 }
@@ -91,31 +90,6 @@ class ScoreData{
         score = Integer.parseInt(Arr[0]);
         name = Arr[1];
     }
-    public static void sortScores(ArrayList<ScoreData> scores){
-        int[] values = new int [scores.size()];
-        String[] names = new String[scores.size()];
-        for(int i=0;i< scores.size() ;i++){
-            values[i]=scores.get(i).score;
-            names[i]=scores.get(i).name;
-        }
-        for(int j=0;j<scores.size()-1;j++){
-            for(int k =1;k<scores.size();k++){
-                if(values[k]>values[j]){
-                    swapValues(values[k],values[j]);
-                    swapStrings(names[k],names[j]);
-                }
-            }
-        }
-    }
-    private static void swapStrings(String S1,String S2){
-        String tmp = S1;
-        S1 = S2;
-        S2 = tmp;
-    }
-    private static void swapValues(int V1,int V2){
-        int tmp = V1;
-        V1 = V2;
-        V2 = tmp;
-    }
+
 
 }
