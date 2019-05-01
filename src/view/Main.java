@@ -7,12 +7,14 @@ public class Main extends Application {
 
     public static final String PATH_RESOURCES = "file:resources/";
     public static final String PATH_RESOURCES_SPRITES = PATH_RESOURCES + "sprites/";
+    public static final String PATH_RESOURCES_SAVES = PATH_RESOURCES + "saves/";
 
     @Override
     public void start(Stage primaryStage) {
         ViewManager manager = new ViewManager();
         primaryStage = manager.getMainStage();
         primaryStage.show();
+
     }
 
     public static void main(String[] args) {
